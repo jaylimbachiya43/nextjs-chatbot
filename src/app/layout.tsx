@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import ChatBot from "@/components/Chat";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,6 +29,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <ChatBot
+          apiKey={process.env.GEMINI_API_KEY || ''}
+          companyName="Your Company"
+          welcomeMessage="Hello! I'm your AI assistant. How can I help you today?"
+          position="bottom-right"
+        />
       </body>
     </html>
   );
